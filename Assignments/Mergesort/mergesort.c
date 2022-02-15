@@ -1,17 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "mergesort.h"
 
 
 /* Functions to compare a and b */
 int int_cmp(const void* a, const void* b){
-    if((int) a == (int) b) return 0;
+    int* c = ((int*) a);
+    int* d = ((int*) b);
 
-    return (int) a > (int) b ? 1 : 0
+    if(*c > *d){
+        return 1;
+    }else if (*d > *c){
+        return -1;
+    }
+    return 0;
+
 }
 int dbl_cmp(const void* a, const void* b){
-    if((double) a == (double) b) return 0;
+    double* c = ((double*) a);
+    double* d = ((double*) b);
 
-    return (double) a > (double) b ? 1 : -1
-}
+    if(*c > *d){
+        return 1;
+    }else if (*d > *c){
+        return -1;
+    }
+    return 0;}
 
 /* Main sorting algorithm you need to implement */
 void mergesort(void*  array,
@@ -19,8 +34,3 @@ void mergesort(void*  array,
                size_t elem_sz,
                int (*comp)(const void*, const void*));
 
-int main(int argc, char** argv){
-    int i = 0;
-    int j = 16;
-    cout << "Mergesort " << int_cmp(&i, &j) << endl;
-}
