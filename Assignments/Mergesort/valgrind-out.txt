@@ -1,0 +1,155 @@
+==4580== Memcheck, a memory error detector
+==4580== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==4580== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==4580== Command: ./mergesort
+==4580== Parent PID: 2458
+==4580== 
+--4580-- 
+--4580-- Valgrind options:
+--4580--    --leak-check=full
+--4580--    --show-leak-kinds=all
+--4580--    --track-origins=yes
+--4580--    --verbose
+--4580--    --log-file=valgrind-out.txt
+--4580-- Contents of /proc/version:
+--4580--   Linux version 5.4.0-97-generic (buildd@lcy02-amd64-032) (gcc version 9.3.0 (Ubuntu 9.3.0-17ubuntu1~20.04)) #110-Ubuntu SMP Thu Jan 13 18:22:13 UTC 2022
+--4580-- 
+--4580-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-f16c-rdrand
+--4580-- Page sizes: currently 4096, max supported 4096
+--4580-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--4580-- Reading syms from /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort
+--4580-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--4580--   Considering /usr/lib/x86_64-linux-gnu/ld-2.31.so ..
+--4580--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--4580--   Considering /lib/x86_64-linux-gnu/ld-2.31.so ..
+--4580--   .. CRC mismatch (computed 975d0390 wanted 30bd717f)
+--4580--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.31.so ..
+--4580--   .. CRC is valid
+--4580-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--4580--    object doesn't have a symbol table
+--4580--    object doesn't have a dynamic symbol table
+--4580-- Scheduler: using generic scheduler lock implementation.
+--4580-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==4580== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-4580-by-pramukh-on-???
+==4580== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-4580-by-pramukh-on-???
+==4580== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-4580-by-pramukh-on-???
+==4580== 
+==4580== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==4580== don't want to do, unless you know exactly what you're doing,
+==4580== or are doing some strange experiment):
+==4580==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=4580 ...command...
+==4580== 
+==4580== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==4580==   /path/to/gdb ./mergesort
+==4580== and then give GDB the following command
+==4580==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=4580
+==4580== --pid is optional if only one valgrind process is running
+==4580== 
+--4580-- REDIR: 0x4022e10 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--4580-- REDIR: 0x4022be0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--4580-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--4580--    object doesn't have a symbol table
+--4580-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--4580--    object doesn't have a symbol table
+==4580== WARNING: new redirection conflicts with existing -- ignoring it
+--4580--     old: 0x04022e10 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--4580--     new: 0x04022e10 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--4580-- REDIR: 0x401f5f0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--4580-- REDIR: 0x4023370 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--4580-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--4580--   Considering /usr/lib/x86_64-linux-gnu/libc-2.31.so ..
+--4580--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--4580--   Considering /lib/x86_64-linux-gnu/libc-2.31.so ..
+--4580--   .. CRC mismatch (computed 86b78530 wanted e380f01c)
+--4580--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.31.so ..
+--4580--   .. CRC is valid
+--4580-- REDIR: 0x4903600 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4902900 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4903930 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4902220 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4902960 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4904dd0 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x491fe60 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x491f9a0 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4903760 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4903590 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4902890 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49022d0 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49036c0 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x491f960 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49027f0 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49023b0 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4903980 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4902350 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4903ad0 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49210d0 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x491f9e0 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49029a0 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4902280 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49027b0 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x490bd20 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49039d0 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4903550 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x491fab0 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4902c60 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49038d0 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4903870 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4904e10 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x4903a20 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--4580-- REDIR: 0x49eb490 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--4580-- REDIR: 0x48fd260 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--4580-- REDIR: 0x49ee670 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--4580-- REDIR: 0x48fd850 (libc.so.6:free) redirected to 0x483c9d0 (free)
+==4580== Conditional jump or move depends on uninitialised value(s)
+==4580==    at 0x1091D7: int_cmp (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1093D0: merge (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1095F8: mergeH (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1095D0: mergeH (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1095D0: mergeH (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x109642: mergesort (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1096D8: main (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==  Uninitialised value was created by a stack allocation
+==4580==    at 0x109646: main (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580== 
+==4580== Conditional jump or move depends on uninitialised value(s)
+==4580==    at 0x1091D7: int_cmp (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1093D0: merge (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1095F8: mergeH (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x109642: mergesort (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1096D8: main (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==  Uninitialised value was created by a stack allocation
+==4580==    at 0x109646: main (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580== 
+==4580== 
+==4580== HEAP SUMMARY:
+==4580==     in use at exit: 0 bytes in 0 blocks
+==4580==   total heap usage: 24 allocs, 24 frees, 196 bytes allocated
+==4580== 
+==4580== All heap blocks were freed -- no leaks are possible
+==4580== 
+==4580== ERROR SUMMARY: 3 errors from 2 contexts (suppressed: 0 from 0)
+==4580== 
+==4580== 1 errors in context 1 of 2:
+==4580== Conditional jump or move depends on uninitialised value(s)
+==4580==    at 0x1091D7: int_cmp (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1093D0: merge (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1095F8: mergeH (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x109642: mergesort (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1096D8: main (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==  Uninitialised value was created by a stack allocation
+==4580==    at 0x109646: main (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580== 
+==4580== 
+==4580== 2 errors in context 2 of 2:
+==4580== Conditional jump or move depends on uninitialised value(s)
+==4580==    at 0x1091D7: int_cmp (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1093D0: merge (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1095F8: mergeH (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1095D0: mergeH (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1095D0: mergeH (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x109642: mergesort (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==    by 0x1096D8: main (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580==  Uninitialised value was created by a stack allocation
+==4580==    at 0x109646: main (in /home/pramukh/Documents/CS392/Assignments/Mergesort/mergesort)
+==4580== 
+==4580== ERROR SUMMARY: 3 errors from 2 contexts (suppressed: 0 from 0)
