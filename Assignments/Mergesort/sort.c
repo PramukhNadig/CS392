@@ -21,26 +21,13 @@
 #define MAX_ELEM 1024
 
 void printUsage(){
-    printf("Usage: ./sort [-i|-d] [filename]\n");
+    printf("Usage: ./sort [-i|-d] filename\n");
     printf("-i: Specifies the file contains ints.\n");
     printf("-d: Specifies the file contains doubles.\n");
     printf("filename: The file to sort.\n");
 
 }
 
-bool checkFile(char* fileName, FILE *file){
-    if(file == NULL){
-        printf("Error: Cannot open '%s'. No such file or directory.", fileName);
-        return false;
-    }
-
-    return true;
-}
-
-
-void printArray(void* array, size_t elem_sz, size_t len){
-
-}
 int main(int argc, char **argv){
     int i = 0, d = 0;
     if(argc == 1){
