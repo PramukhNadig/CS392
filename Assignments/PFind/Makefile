@@ -1,11 +1,12 @@
 CC = gcc
-CFLAGS = -c -O3 -Werror -Wall -pedantic
+CFLAGS = -c  -Werror -Wall -pedantic
 
 all: pfind.o
-	${CC} $(CFLAGS) -o pfind.out pfind.c
-	rm *.o
+
+${CC} $(CFLAGS) -o a.out pfind.c
+rm *.o
 
 clean:
-	rm *.o
 	rm *.out
+	rm *.o
 

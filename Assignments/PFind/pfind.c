@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
+ #include <sys/stat.h>
 
 
 typedef int bool;
@@ -13,11 +14,20 @@ typedef int bool;
 bool checkPermissionString(char* pstring);
 
 int main(int argc, char **argv){
-
-    if(checkPermissionString(argv[2]) == FALSE){
-        printf("Error: Permissions string 'pstring'is invalid.");
+    struct stat buf;
+    if(stat(argv[1], &buf) < 0){    
+        puts("lol retard.\n");
         exit(EXIT_FAILURE);
     }
+
+    printf("lol okay. %d\n", buf.st_mode);
+
+    if(checkPermissionString(argv[2]) == FALSE){
+        printf("Error: Permissions string \'%s\'is invalid.", argv[2]);
+        exit(EXIT_FAILURE);
+    }
+
+    
 
 
 
