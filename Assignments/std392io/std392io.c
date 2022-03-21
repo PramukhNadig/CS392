@@ -5,7 +5,7 @@ int output(char* filename, char format, void* data){
   if(strcmp(filename,"") == 0){
     fd = STDOUT_FILENO;
   }else{
-    fd = open(filename, O_WRONLY|O_APPEND, 666);
+    fd = open(filename, O_WRONLY|O_APPEND|O_CREAT, 0666);
 
   }
 
@@ -19,7 +19,7 @@ int output(char* filename, char format, void* data){
 
     if(data == NULL){
         errno = EIO;
-                writeLine(1);
+        writeLine(1);
 
         return -1;
     }
@@ -46,15 +46,21 @@ int output(char* filename, char format, void* data){
 int input(char* filename, char format, void* data){
   int fd;
   int sizeMul = 1;
+  int count = 0;
   char* str = malloc(sizeof(char)*128 * sizeMul);
+  char c;
   if((fd = open(filename, O_RDONLY)) < 0){
     errno = ENOENT;
     return -1;
   }
 
-    while(read(fd, str, sizeMul*128) == sizeMul*128){
+    while(read(fd, c, 1) && c != '\n' && c != NULL){
+      if(count == sizeMul*128){
       sizeMul++;
       str = malloc(sizeof(char)*128 * sizeMul);
+      count++;
+      }
+      printf("%s ", c);
     }
 
     printf("%s", str);

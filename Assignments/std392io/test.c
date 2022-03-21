@@ -7,8 +7,10 @@ int main(int argc, char **argv){
     // char* l = toString(18272);
     // printf("%s\n", l);
     write(1, "wowzers", 5);
-    output("wow.txt", 'd', &k);
-    output("wow.txt", 'd', &k);
-    input("wow.txt", 's', &s);
+    output("ww.txt", 'd', &k);
+    output("ww.txt", 'd', &k);
+    input("ww.txt", 'd', &s);
+    printf("%s\n", s);
+    // input("wow.txt", 's', &s);
 
 }
