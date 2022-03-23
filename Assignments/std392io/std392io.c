@@ -1,6 +1,7 @@
 #include "std392io.h"
 
 int output(char* filename, char format, void* data){
+
   int fd;
   if(strcmp(filename,"") == 0){
     fd = STDOUT_FILENO;
@@ -10,32 +11,31 @@ int output(char* filename, char format, void* data){
   }
 
 
-    lseek(fd, 0, SEEK_END);
     if(format != 's' && format != 'd'){
         errno = EIO;
-        writeLine(1);
         return -1;
     } 
 
     if(data == NULL){
         errno = EIO;
-        writeLine(1);
 
         return -1;
     }
 
+    lseek(fd, 0, SEEK_END);
 
     if(format == 's'){
         char* s = data;
-        
+
         write(fd, s, strlen(s));
-       // writeLine(fd);
+        __writeLine(fd);
 
     }else{
         int k = *(int *) data;
-        char* s = toString(k);
+        char* s = __toString(k);
         write(fd, s, strlen(s));
-        writeLine(fd);
+        __writeLine(fd);
+
         free(s);
     }
 
@@ -48,22 +48,25 @@ int input(char* filename, char format, void* data){
   int sizeMul = 1;
   int count = 0;
   char* str = malloc(sizeof(char)*128 * sizeMul);
-  char c;
+  char c[1];
   if((fd = open(filename, O_RDONLY)) < 0){
     errno = ENOENT;
     return -1;
   }
 
-    while(read(fd, c, 1) && c != '\n' && c != NULL){
-      if(count == sizeMul*128){
-      sizeMul++;
-      str = malloc(sizeof(char)*128 * sizeMul);
-      count++;
+    while(read(fd, &c, 1)){
+      if(*c =='\n'){
+        break;
       }
-      printf("%s ", c);
-    }
+      if(count++ == sizeMul*128){
+      str = realloc(str, sizeof(char)*128 * ++sizeMul);
+      }
 
-    printf("%s", str);
+      strncat(str, c, 1);
+    }
+    printf("%s\n", str);
+    *data = &str;
+
     return 0;
 }
 
@@ -73,8 +76,8 @@ int clean(){
 
 
 
-char* toString(int k){
- char* str = (char*) malloc (sizeof(char) * lenOfNum(k) + 1);
+char* __toString(int k){
+ char* str = (char*) malloc (sizeof(char) * __lenOfNum(k) + 1);
   int i = 0;
 
  if(k < 0){
@@ -82,9 +85,9 @@ char* toString(int k){
     i++;
     k = k*-1;
   }
-  k = reverse(k);
+  k = __reverse(k);
   while(k >= 1){
-    str[i] = intToAscii(k%10);
+    str[i] = __intToAscii(k%10);
     k /= 10;
     i++;
   }
@@ -95,11 +98,11 @@ char* toString(int k){
   
 }
 
-int intToAscii(int number) {
+int __intToAscii(int number) {
    return '0' + number;
 }
 
-int lenOfNum(int k){
+int __lenOfNum(int k){
   int i = 0;
 
   if(k < 0){
@@ -114,7 +117,7 @@ int lenOfNum(int k){
   return i;
 }
 
-int reverse(int n){
+int __reverse(int n){
     int reverse = 0, remainder;
     while (n != 0) {
     remainder = n % 10;
@@ -124,6 +127,6 @@ int reverse(int n){
   return reverse;
 }
 
-int writeLine(int fd){
-  write(fd, "\n", 1);
+int __writeLine(int fd){
+  return write(fd, "\n", 1);
 }

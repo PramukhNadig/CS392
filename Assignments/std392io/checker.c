@@ -55,7 +55,7 @@ int main(int argc, char const *argv[]) {
     long int longsize = 1 << 8;
     char* newfile = (char*)malloc(longsize);
     for (size_t i = 0; i < longsize; i++) {
-        newfile[i] = '0' + rand()%1;
+        newfile[i] = '0' + rand()%72;
         if (newfile[i] == 'a') {
             newfile[i+1] = '\n';
             i ++;
@@ -75,57 +75,57 @@ int main(int argc, char const *argv[]) {
      * 
      * **********************/
 
-    // char newstr[1024] = {0};
-    // int  num;
+    char newstr[1024] = {0};
+    int  num;
 
 
-    // /* Error: File doesn't exist */
-    // EXEC(input("nofile.txt", 's', newstr))
-    // EXEC(input("nofile.txt", 'd', &num))
-    // /* Error: Unrecognized format */
-    // EXEC(input("", 'S', newstr))
-    // EXEC(input("", 'X', newstr))
-    // EXEC(input("", 'D', &num))
-    // EXEC(input("", 'i', &num))
-    // /* Error: File doesn't exist AND unrecognized format */
-    // EXEC(input("nofile.txt", 'S', newstr))
-    // EXEC(input("nofile.txt", 'X', newstr))
-    // EXEC(input("nofile.txt", 'D', &num))
-    // EXEC(input("nofile.txt", 'i', &num))    
+    /* Error: File doesn't exist */
+    EXEC(input("nofile.txt", 's', newstr))
+    EXEC(input("nofile.txt", 'd', &num))
+    /* Error: Unrecognized format */
+    EXEC(input("", 'S', newstr))
+    EXEC(input("", 'X', newstr))
+    EXEC(input("", 'D', &num))
+    EXEC(input("", 'i', &num))
+    /* Error: File doesn't exist AND unrecognized format */
+    EXEC(input("nofile.txt", 'S', newstr))
+    EXEC(input("nofile.txt", 'X', newstr))
+    EXEC(input("nofile.txt", 'D', &num))
+    EXEC(input("nofile.txt", 'i', &num))    
 
 
-    // /* Receive a string from stdin */
-    // EXEC(input("", 's', newstr))
-    // /* Print out the string to stdout */
-    // EXEC(output("", 's', newstr))
-    // /* Receive an integer from stdin */
-    // EXEC(input("", 'd', &num))
-    // EXEC(output("", 'd', &num))
+    /* Receive a string from stdin */
+    EXEC(input("", 's', newstr))
+    /* Print out the string to stdout */
+    EXEC(output("", 's', newstr))
+    /* Receive an integer from stdin */
+    EXEC(input("", 'd', &num))
+    EXEC(output("", 'd', &num))
 
-    // /* Read a file of strings */
-    // while (!input(FILESHORT, 's', newstr)) {
-    //     output("", 's', "Line: ");
-    //     output("", 's', newstr);
-    // }
+    /* Read a file of strings */
+    while (!input(FILESHORT, 's', newstr)) {
+        output("", 's', "Line: ");
+        output("", 's', newstr);
+    }
 
-    // /* Read a file of strings */
-    // while (!input(FILELONGG, 's', newstr)) {
-    //     output("", 's', "Line: ");
-    //     output("", 's', newstr);
-    // }
+    /* Read a file of strings */
+    while (!input(FILELONGG, 's', newstr)) {
+        output("", 's', "Line: ");
+        output("", 's', newstr);
+    }
 
-    // /* Read a file of integers */
-    // while (!input(FILESHORT, 'd', &num)) {
-    //     output("", 's', "Number: ");
-    //     output("", 'd', &num);
-    // }
+    /* Read a file of integers */
+    while (!input(FILESHORT, 'd', &num)) {
+        output("", 's', "Number: ");
+        output("", 'd', &num);
+    }
 
-    // /* Nothing should happen */
-    // EXEC(input(FILESHORT, 's', NULL))
-    // EXEC(input(FILESHORT, 'd', NULL))
+    /* Nothing should happen */
+    EXEC(input(FILESHORT, 's', NULL))
+    EXEC(input(FILESHORT, 'd', NULL))
 
 
-    // EXEC(clean())
+    EXEC(clean())
     
-    // return 0;
+    return 0;
 }

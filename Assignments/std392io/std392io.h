@@ -16,4 +16,12 @@ int clean();
 
 //char* __convert(int);
 
-char *toString(int);
+char *__toString(int);
+
+int __intToAscii(int);
+
+int __reverse(int);
+
+int __lenOfNum(int);
+
+int __writeLine(int);
